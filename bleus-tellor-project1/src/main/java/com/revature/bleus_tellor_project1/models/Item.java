@@ -23,11 +23,12 @@ public class Item {
 
     private double itemPrice;
 
-    public Item() { };
 
-    public Item(int sellerId, String itemName, double itemPrice) {  };
+    public Item() { }
 
-    public Item(int itemId, int sellerId, String itemName, double itemPrice) {  };
+    public Item(int sellerId, String itemName, double itemPrice) {  }
+
+    public Item(int itemId, int sellerId, String itemName, double itemPrice) {  }
 
 
     public int getItemId() {

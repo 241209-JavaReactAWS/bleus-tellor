@@ -1,13 +1,14 @@
 package com.revature.bleus_tellor_project1.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.revature.bleus_tellor_project1.daos.ItemDAO;
 import com.revature.bleus_tellor_project1.models.Item;
 
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 public class ItemService {
@@ -16,8 +17,7 @@ public class ItemService {
     @Autowired
     public ItemService(ItemDAO _itemDAO) {   
         this.itemDAO = _itemDAO;
-    };
-
+    }
     public Optional<Item> getItemById(int _itemId) {
         return itemDAO.findById(_itemId);
     }
