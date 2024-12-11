@@ -10,6 +10,7 @@ public class Customer {
     //Last Name
     //UserName
     //Password
+    //Purchase Amount
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerId;
@@ -18,23 +19,27 @@ public class Customer {
     private String lastName;
     private String userName;
     private String userPassword;
+    private double purchaseAmount;
+
 
     public Customer() {
     }
 
-    public Customer(int customerId, String firstName, String lastName, String userName, String userPassword) {
+    public Customer(int customerId, String firstName, String lastName, String userName, String userPassword, double purchaseAmount) {
         this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
         this.userPassword = userPassword;
+        this.purchaseAmount = purchaseAmount;
     }
 
-    public Customer(String firstName, String lastName, String userName, String userPassword) {
+    public Customer(String firstName, String lastName, String userName, String userPassword, double purchaseAmount) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
         this.userPassword = userPassword;
+        this.purchaseAmount = purchaseAmount;
     }
 
     public int getCustomerId() {
@@ -76,4 +81,12 @@ public class Customer {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+    public double getPurchaseAmount() {
+        return purchaseAmount;
+    }
+
+    public void setPurchaseAmount(double purchaseAmount) {
+        this.purchaseAmount = purchaseAmount;
+    }
+
 }
