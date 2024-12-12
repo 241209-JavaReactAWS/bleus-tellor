@@ -28,9 +28,9 @@ public class CustomerService {
     }
     //Create customer Method
     public Customer createNewCustomers(Customer customers){
-        if(customers.getPurchaseAmount() < 0){
-            return null;
-        }
+        // if(customerDAO.getPurchaseAmount() < 0){
+        //     return null;
+        // }
          return customerDAO.save(customers);
     }
 }
