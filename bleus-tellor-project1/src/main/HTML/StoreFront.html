@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #item-container {
+            background-color: whitesmoke;
+            border: 10px solid black;
+            display: flex;
+            align-items:end;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body style="margin: 0; padding: 0; height: 100%;">
+    <div>
+        <h1 style="text-align: center;"> Store Front Items</h1>
+    </div>
+
+    <div id="item-container">
+        <div>
+            <img src="https://www.nintendo.com/eu/media/images/10_share_images/support_9/H2x1_GameBoy_support_no_logo_image1280w.jpg"
+            alt="Image of item" height="200px">
+        </div>    
+        <div>
+            <!--Items will automatically have item name, description and vendor name-->
+            <div><strong>Item Name:</strong> {item name}</div>
+            <div><strong>Item Description:</strong> {item description}</div>
+            <div><strong>Sale Price:</strong>  sale price</div>
+            <div><strong>Vendor ID:</strong>  {vendor name}</div>
+
+            
+        </div>
+    </div>
+
+</body>
+
+<footer
+    style="background-color: whitesmoke; color: black; font-size: small; text-align: center; width: 100%; position: fixed; bottom: 0; left: 0;">
+    <p>&copy; 2024 TellorBleus Vintage Tech Website.</p>
+</footer>
+
+</html>
