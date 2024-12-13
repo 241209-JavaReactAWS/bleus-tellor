@@ -22,7 +22,15 @@ a {
     display: flex;
     justify-content: center;
 }
-
+h6{
+    text-align: center;
+    background-color: white;
+    width: 154px;
+    border: 4px solid #146eb4;
+    padding: 6px;
+    margin: 20px;
+    border-radius: 13px;
+}
 h1{
     text-align: center;
     background-color: white;
@@ -30,6 +38,8 @@ h1{
     border: 15px solid #146eb4;
     padding: 50px;
     margin: 20px;
+    border-radius: 12px;
+    
    
 }
 
@@ -39,6 +49,7 @@ h1{
     display: flex;
     align-items:end;
     margin: 20px;
+    border-radius: 13px;
    
 }
 
@@ -54,4 +65,37 @@ footer {
 }
 img {
   height: 200px;
+}
+.userWrapper {
+    width: 50%; 
+    margin-left: 10%; 
+    margin-top: 50px;
+    
+
+}
+.userLogginWrapper{
+    margin-bottom: 20px;
+    font-size: x-large;
+    
+   
+}
+
+
+input{
+    background-color: whitesmoke; 
+    padding: 4px; 
+    margin-top: 5px;
+    border-radius: 12px;
+    border: 4px solid #146eb4;
+
+}
+
+button{
+    border: 4px solid #146eb4;
+    background-color: whitesmoke; 
+    font-size: small; 
+    padding: 10px; 
+    width: 20%;
+    border-radius: 12px;
+    padding: 5px;
 }
