@@ -6,22 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
    
-    <link rel="stylesheet" href="../CSS/HomePage.css">
+    <link rel="stylesheet" href="../CSS/StoreFront.css">
 
 </head>
 
 <body>
-    <header class="header">
-        <div class="headerTopRight">
-        <a href="./HomePage.html">Home</a>
-        <a href="./CustomerLogin.html">Customer Login</a>
-        <a href="./SellerLogin.html">Seller Login</a>
-        </div>
-        </header>
-    <div class="pageTitle">
+    <header>
         <h1> Store Front Items</h1>
-    </div>
+    </header>
 
+    <nav>
+        <ul>
+            <li><a href="./HomePage.html">HomePage</a></li>
+            <li><a href="./StoreFront.html">StoreFront</a></li>
+            <li><a href="./CustomerLogin.html">CustomerLogin</a></li>
+            <li><a href="./SellerLogin.html">SellerLogin</a></li>
+
+        </ul>
+    </nav>
+
+    <main>
     <div id="item-container">
         <div>
             <img src="https://www.nintendo.com/eu/media/images/10_share_images/support_9/H2x1_GameBoy_support_no_logo_image1280w.jpg"
@@ -37,12 +41,29 @@
             
         </div>
     </div>
+    <div id="item-container">
+        <div>
+            <img src="https://www.nintendo.com/eu/media/images/10_share_images/support_9/H2x1_GameBoy_support_no_logo_image1280w.jpg"
+            alt="Image of item" >
+        </div>    
+        <div>
+            <!--Items will automatically have item name, description and vendor name-->
+            <div><strong>Item Name:</strong> {item name}</div>
+            <div><strong>Item Description:</strong> {item description}</div>
+            <div><strong>Sale Price:</strong>  sale price</div>
+            <div><strong>Vendor ID:</strong>  {vendor name}</div>
+
+            
+        </div>
+    </div>
+    
+</main>
+    <footer
+    
+        <p>&copy; 2024 TellorBleus Vintage Tech Website.</p>
+    </footer>
 
 </body>
 
-<footer
-
-    <p>&copy; 2024 TellorBleus Vintage Tech Website.</p>
-</footer>
 
 </html>
