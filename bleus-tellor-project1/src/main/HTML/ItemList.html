@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <h1> Store Front Items</h1>
+        <h1> Edit Items</h1>
     </header>
 
     <nav>
@@ -21,6 +21,7 @@
             <li><a href="./ItemList.html">EditItemList</a></li>
             <li><a href="./CustomerLogin.html">CustomerLogin</a></li>
             <li><a href="./SellerLogin.html">SellerLogin</a></li>
+
 
         </ul>
     </nav>
@@ -32,12 +33,25 @@
             alt="Image of item" >
         </div>    
         <div>
-            <!--Items will automatically have item name, description and vendor name-->
-            <div><strong>Item Name:</strong> {item name}</div>
-            <div><strong>Item Description:</strong> {item description}</div>
-            <div><strong>Sale Price:</strong>  sale price</div>
-            <div><strong>Vendor ID:</strong>  {vendor name}</div>
+            <!--Input items to store inside of the database -->
+            <div>
+                <label>Item Name: </label>
+                <input type="text">
+            </div>
+            <div>
+            <label>Item Description: </label>
+            <input type="text">
+            </div>
+            <div>
+            <label>Sale Price: </label>
+            <input type="text">
+            </div>
+            <div>
+            <label >Vendor ID: </label>
+            <input type="text">
+            </div>
 
+            <button> Add Item To DataBase</button>
             
         </div>
     </div>
@@ -47,12 +61,13 @@
             alt="Image of item" >
         </div>    
         <div>
-            <!--Items will automatically have item name, description and vendor name-->
+            <!--Items list will be filled out with every item available, vendor will be able to delete them with this-->
             <div><strong>Item Name:</strong> {item name}</div>
             <div><strong>Item Description:</strong> {item description}</div>
             <div><strong>Sale Price:</strong>  sale price</div>
             <div><strong>Vendor ID:</strong>  {vendor name}</div>
 
+            <button>Delete Item</button>
             
         </div>
     </div>
