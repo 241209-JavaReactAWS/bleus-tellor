@@ -1,5 +1,6 @@
 package com.revature.bleus_tellor_project1.controllers;
 
+import com.revature.bleus_tellor_project1.models.Customer;
 import com.revature.bleus_tellor_project1.models.Item;
 import com.revature.bleus_tellor_project1.models.Role;
 import com.revature.bleus_tellor_project1.services.ItemService;
@@ -7,9 +8,9 @@ import com.revature.bleus_tellor_project1.services.ItemService;
 import jakarta.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +25,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("items")
-@CrossOrigin(origins = "https://localhost:5170", allowCredentials = "true")
+@CrossOrigin(origins = "https://localhost:5173", allowCredentials = "true")
 public class ItemController {
 
     private final ItemService itemService;
@@ -43,11 +44,11 @@ public class ItemController {
     public ResponseEntity<Item> getSpecificItemHandler(@PathVariable int itemId) {
         Optional<Item> possibleItem = itemService.getItemById(itemId);
 
-        if(possibleItem.isPresent()) {
-            return new ResponseEntity<>(possibleItem.get(), HttpStatus.FOUND);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if(possibleItem.isEmpty()) {
+            return ResponseEntity.status(404).build();
         }
+
+        return ResponseEntity.status(304).body(possibleItem.get());
     }
 
 
@@ -91,4 +92,26 @@ public class ItemController {
         return ResponseEntity.status(204).body(possibleItem.get());
     }
 
+    @DeleteMapping("/items/{itemId}")
+    public ResponseEntity<Item> deleteItemHandler(HttpSession session, @PathVariable int itemId) {
+        if (session.isNew() || session.getAttribute("username") == null) {
+            return ResponseEntity.status(401).build();
+        }
+
+        if(session.getAttribute("role") != Role.ADMIN) {
+            return ResponseEntity.status(403).build();
+        }
+
+        Optional<Item> possibleItem = itemService.getItemById(itemId);
+
+        if(possibleItem.isEmpty()) {
+            return ResponseEntity.status(404).build();
+        }
+
+        itemService.deleteItem(possibleItem.get());
+
+        return ResponseEntity.status(204).body(possibleItem.get());
+
+
+    }
 }

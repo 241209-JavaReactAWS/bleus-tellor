@@ -1,6 +1,7 @@
 package com.revature.bleus_tellor_project1.controllers;
 
 import com.revature.bleus_tellor_project1.models.Customer;
+import com.revature.bleus_tellor_project1.models.Role;
 import com.revature.bleus_tellor_project1.services.CustomerService;
 
 import jakarta.servlet.http.HttpSession;
@@ -10,10 +11,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/customers") // http://localhost:8080/customers
-@CrossOrigin(origins = "http://localhost:5170", allowCredentials = "true")
+@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -24,8 +26,12 @@ public class CustomerController {
     }
 
     @GetMapping
-    public List<Customer> getAllCustomerHandler(){
-        return customerService.getAllCustomer();
+    public ResponseEntity<List<Customer>> getAllCustomerHandler(HttpSession session){
+                
+        if(session.getAttribute("role") != Role.ADMIN) {
+            return null;
+        }
+        return ResponseEntity.status(304).body(customerService.getAllCustomer());
     }
 
     @PostMapping("/login")
@@ -82,24 +88,37 @@ public class CustomerController {
         return ResponseEntity.ok(actualCustomer);
     }
 
-    // @PostMapping
-    // public ResponseEntity<Customer> createCustomerHandler(@RequestBody Customer customer){
-    //     Customer possibleCustomer = customerService.createNewCustomers(customer);
-    //     if (possibleCustomer == null){
-    //         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    //     }else{
-    //         return new ResponseEntity<>(possibleCustomer, HttpStatus.OK);
-    //     }
-    // }
+    @PostMapping("/createAccount")
+    public ResponseEntity<Customer> createCustomerHandler(Customer customer) {
 
-    // @GetMapping("{customerId}") //http://localhost:8080/customers/{customerId}
-    // public ResponseEntity<Customer> getCustomerByIdHandler(@PathVariable int customerID){
-    //     Optional<Customer> possibleCustomer = customerService.getCustomerById(customerID);
-    //     if(possibleCustomer.isPresent()){
-    //         return new ResponseEntity<>(possibleCustomer.get(), HttpStatus.OK);
-    //     }else{
-    //         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    //     }
+        Customer tempCustomer = customer;
 
-    // }
+        if(customer.getCustomerPassword() == "adminpass")
+        {
+            tempCustomer.setRole(Role.ADMIN);
+        } 
+        
+        tempCustomer.setRole(Role.USER);
+
+        return ResponseEntity.status(200).body(customerService.createCustomer(tempCustomer));
+    }
+
+    @PutMapping("/{customerId}")
+    public ResponseEntity<Customer> updateCustomerHandler(Customer customer, HttpSession session) {
+
+        Optional<Customer> possibleCustomer = customerService.getCustomer(customer.getCustomerId());
+
+        if(possibleCustomer.isEmpty()) {
+            return ResponseEntity.status(404).build();
+        }
+        
+
+        if(session.getAttribute("role") != Role.ADMIN) {
+            return ResponseEntity.status(403).build();
+        }
+
+        Customer actualCustomer = customerService.updateCustomer(customer);
+
+        return ResponseEntity.status(200).body(actualCustomer);
+    }
 }
