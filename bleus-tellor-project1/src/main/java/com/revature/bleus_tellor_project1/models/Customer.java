@@ -17,9 +17,16 @@ public class Customer {
 
     private String userPassword;
 
+    @ManyToMany
+    @JoinTable(
+        name = "cart_items",
+        joinColumns = @JoinColumn(name = "customer_id"),
+        inverseJoinColumns = @JoinColumn(name="item_id")
+    )
     private Set<Item> itemCart;
 
     private Role role;
+
 
     public Customer() {
     }
@@ -40,11 +47,11 @@ public class Customer {
         this.customerId = customerId;
     }
 
-    public String getUserPassword() {
+    public String getCustomerPassword() {
         return userPassword;
     }
 
-    public void setUserPassword(String userPassword) {
+    public void setCustomerPassword(String userPassword) {
         this.userPassword = userPassword;
     }
 
