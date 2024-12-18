@@ -5,13 +5,15 @@ import com.revature.bleus_tellor_project1.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.StackWalker.Option;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CustomerService {
 
-    public final CustomerDAO customerDAO;
+    private final CustomerDAO customerDAO;
+
     @Autowired
     public CustomerService(CustomerDAO customerDAO) {
         this.customerDAO = customerDAO;
@@ -32,5 +34,11 @@ public class CustomerService {
              return null;
          }
          return customerDAO.save(customers);
+    }
+
+    public Customer loginCustomer(String userName, String password) {
+        Optional<Customer> possibleCustomer = customerDAO.get
+        
+        return null;
     }
 }

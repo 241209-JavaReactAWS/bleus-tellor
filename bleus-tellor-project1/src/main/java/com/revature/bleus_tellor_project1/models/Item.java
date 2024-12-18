@@ -6,18 +6,16 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "items")
 public class Item {
-    /*Item Id Primary Key
-    User Id
-    Item Name
-    Item Price
-    */
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int itemId;
     
-    @ManyToOne
     private int sellerId;
+
+    private int itemQuality;
+
+    private String itemBrand;
 
     private String itemName;
 
@@ -26,9 +24,7 @@ public class Item {
 
     public Item() { }
 
-    public Item(int sellerId, String itemName, double itemPrice) {  }
-
-    public Item(int itemId, int sellerId, String itemName, double itemPrice) {  }
+    public Item(int itemId, int sellerId, int itemQuality, String itemBrand, String itemName, double itemPrice) {  }
 
 
     public int getItemId() {
@@ -61,5 +57,21 @@ public class Item {
 
     public void setItemPrice(double _itemPrice) {
         this.itemPrice = _itemPrice;
+    }
+
+    public String getItemBrand() {
+        return itemBrand;
+    }
+
+    public void setItemBrand(String itemBrand) {
+        this.itemBrand = itemBrand;
+    }
+
+    public int getItemQuality() {
+        return itemQuality;
+    }
+
+    public void setItemQuality(int itemQuality) {
+        this.itemQuality = itemQuality;
     }
 }

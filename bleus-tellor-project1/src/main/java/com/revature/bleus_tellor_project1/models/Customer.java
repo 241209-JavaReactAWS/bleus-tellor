@@ -1,45 +1,35 @@
 package com.revature.bleus_tellor_project1.models;
 
+import java.util.Set;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "customers")
 public class Customer {
-    //CustomerId (Primary Key)
-    //First Name
-    //Last Name
-    //UserName
-    //Password
-    //Purchase Amount
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customerId;
-    @Column(name = "first_name")
-    private String firstName;
-    private String lastName;
-    private String userName;
-    private String userPassword;
-    private double purchaseAmount;
 
+    @Column(unique = true)
+    private String userName;
+
+    private String userPassword;
+
+    private Set<Item> itemCart;
+
+    private Role role;
 
     public Customer() {
     }
 
-    public Customer(int customerId, String firstName, String lastName, String userName, String userPassword, double purchaseAmount) {
+    public Customer(int customerId, String userName, String userPassword, Set<Item> itemCart, Role role) {
         this.customerId = customerId;
-        this.firstName = firstName;
-        this.lastName = lastName;
         this.userName = userName;
         this.userPassword = userPassword;
-        this.purchaseAmount = purchaseAmount;
-    }
-
-    public Customer(String firstName, String lastName, String userName, String userPassword, double purchaseAmount) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.userName = userName;
-        this.userPassword = userPassword;
-        this.purchaseAmount = purchaseAmount;
+        this.itemCart = itemCart;
+        this.role = role;
     }
 
     public int getCustomerId() {
@@ -66,27 +56,19 @@ public class Customer {
         this.userName = userName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public Set<Item> getItemCart() {
+        return itemCart;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setItemCart(Set<Item> itemCart) {
+        this.itemCart = itemCart;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public Role getRole() {
+        return role;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setRole(Role role) {
+        this.role = role;
     }
-    public double getPurchaseAmount() {
-        return purchaseAmount;
-    }
-
-    public void setPurchaseAmount(double purchaseAmount) {
-        this.purchaseAmount = purchaseAmount;
-    }
-
 }

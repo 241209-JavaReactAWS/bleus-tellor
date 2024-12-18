@@ -15,26 +15,37 @@ public class ItemService {
     private final ItemDAO itemDAO;
 
     @Autowired
-    public ItemService(ItemDAO _itemDAO) {   
-        this.itemDAO = _itemDAO;
+    public ItemService(ItemDAO itemDAO) {   
+        this.itemDAO = itemDAO;
     }
-    public Optional<Item> getItemById(int _itemId) {
-        return itemDAO.findById(_itemId);
+
+
+    public Optional<Item> getItemById(int itemId) {
+        return itemDAO.findById(itemId);
     }
 
     public List<Item> getAllItems() {
         return itemDAO.findAll();
     }
 
-    public List<Item> getItemsBySeller(int _sellerId) {
-        return itemDAO.findBySeller_Id(_sellerId);
+    public Item createNewItem(Item item) {
+        if(getItemById(item.getItemId()).isEmpty()) {
+        return itemDAO.save(item);
+        }
+        return null;
     }
 
-    public Item createNewItem(Item _item) {
-        return itemDAO.save(_item);
+    public void deleteItem(Item item) {
+        if(getItemById(item.getItemId()).isEmpty()) {
+            return;
+        }
+        itemDAO.delete(item);
     }
 
-    public void deleteItem(Item _item) {
-        itemDAO.delete(_item);
+    public Item updateItem(Item item) {
+        if(getItemById(item.getItemId()).isEmpty()) {
+            return null;
+        }
+        return itemDAO.save(item);
     }
 }
