@@ -29,23 +29,14 @@ public class ItemService {
     }
 
     public Item createNewItem(Item item) {
-        if(getItemById(item.getItemId()).isEmpty()) {
         return itemDAO.save(item);
-        }
-        return null;
     }
 
     public void deleteItem(Item item) {
-        if(getItemById(item.getItemId()).isEmpty()) {
-            return;
-        }
         itemDAO.delete(item);
     }
 
     public Item updateItem(Item item) {
-        if(getItemById(item.getItemId()).isEmpty()) {
-            return null;
-        }
         return itemDAO.save(item);
     }
 }
