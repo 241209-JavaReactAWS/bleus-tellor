@@ -44,7 +44,7 @@ public class CustomerService {
     }
 
     public Customer loginCustomer(String userName, String password) {
-        Optional<Customer> possibleCustomer = customerDAO.getCustomerByUsername(userName);
+        Optional<Customer> possibleCustomer = customerDAO.getCustomerByUserName(userName);
 
         if(possibleCustomer.isEmpty()) {
             return null;
@@ -61,7 +61,7 @@ public class CustomerService {
 
     public Customer addItemToCart(String username, int itemId) {
         
-        Optional<Customer> possibleCustomer = customerDAO.getCustomerByUsername(username);
+        Optional<Customer> possibleCustomer = customerDAO.getCustomerByUserName(username);
 
         Optional<Item> possibleItem = itemDAO.findById(itemId);
 
@@ -81,7 +81,7 @@ public class CustomerService {
 
     public Customer removeItemFromCart(String username, int itemId) {
         
-        Optional<Customer> possibleCustomer = customerDAO.getCustomerByUsername(username);
+        Optional<Customer> possibleCustomer = customerDAO.getCustomerByUserName(username);
         Optional<Item> possibleItem = itemDAO.findById(itemId);
 
         if(possibleCustomer.isEmpty() || possibleItem.isEmpty()) {

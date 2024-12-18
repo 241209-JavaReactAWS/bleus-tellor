@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CustomerDAO extends JpaRepository<Customer, Integer> {
-    Optional<Customer> getCustomerByUsername(String username);
+    Optional<Customer> getCustomerByUserName(String userName);
 }
