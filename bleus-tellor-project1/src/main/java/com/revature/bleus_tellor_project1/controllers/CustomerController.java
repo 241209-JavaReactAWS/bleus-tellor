@@ -96,9 +96,9 @@ public class CustomerController {
         if(customer.getCustomerPassword() == "adminpass")
         {
             tempCustomer.setRole(Role.ADMIN);
-        } 
-        
-        tempCustomer.setRole(Role.USER);
+        } else {
+            tempCustomer.setRole(Role.USER);
+        }
 
         return ResponseEntity.status(200).body(customerService.createCustomer(tempCustomer));
     }
