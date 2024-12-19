@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.StackWalker.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -120,5 +121,21 @@ public class CustomerController {
         Customer actualCustomer = customerService.updateCustomer(customer);
 
         return ResponseEntity.status(200).body(actualCustomer);
+    }
+
+    @GetMapping("{/myAccount}")
+    public ResponseEntity<Customer> getCustomerHandler(HttpSession session) {
+
+        if (session.isNew() || session.getAttribute("username") == null) {
+            return ResponseEntity.status(401).build();
+        }
+
+        Optional<Customer> possibleCustomer = customerService.getCustomerByUsername((String) session.getAttribute("userName"));
+
+        if(possibleCustomer.isEmpty()) {
+            return ResponseEntity.status(404).build();
+        }
+
+        return ResponseEntity.status(200).body(possibleCustomer.get());
     }
 }

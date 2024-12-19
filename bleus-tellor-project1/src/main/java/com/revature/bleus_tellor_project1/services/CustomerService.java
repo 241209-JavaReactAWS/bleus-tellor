@@ -37,6 +37,12 @@ public class CustomerService {
         return customerDAO.findById(customerId);
     }
 
+    public Optional<Customer> getCustomerByUsername(String userName) {
+        Optional<Customer> possibleCustomer = customerDAO.getCustomerByUserName(userName);
+
+        return possibleCustomer;
+    }
+
     public void deleteCustomer(Customer customer) {
         customerDAO.delete(customer);
     }
