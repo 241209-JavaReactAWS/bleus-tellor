@@ -21,6 +21,8 @@ public class Item {
 
     private double itemPrice;
 
+    private String picUrl;
+
 
     public Item() { }
 
@@ -73,5 +75,13 @@ public class Item {
 
     public void setItemQuality(int itemQuality) {
         this.itemQuality = itemQuality;
+    }
+
+    public String getPicUrl() {
+        return picUrl;
+    }
+
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
     }
 }

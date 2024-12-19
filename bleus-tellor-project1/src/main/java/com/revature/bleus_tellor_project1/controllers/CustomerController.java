@@ -98,7 +98,7 @@ public class CustomerController {
             tempCustomer.setRole(Role.ADMIN);
         } 
         
-        tempCustomer.setRole(Role.USER);
+        tempCustomer.setRole(Role.CUSTOMER);
 
         return ResponseEntity.status(200).body(customerService.createCustomer(tempCustomer));
     }
