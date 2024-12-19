@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.StackWalker.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,12 +26,12 @@ public class CustomerController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Customer>> getAllCustomerHandler(HttpSession session){
+    public List<Customer> getAllCustomerHandler(HttpSession session){
                 
-        if(session.getAttribute("role") != Role.ADMIN) {
-            return null;
-        }
-        return ResponseEntity.status(304).body(customerService.getAllCustomer());
+        // if(session.getAttribute("role") != Role.ADMIN) {
+        //     return null;
+        // }
+        return customerService.getAllCustomer();
     }
 
     @PostMapping("/login")
@@ -90,17 +89,19 @@ public class CustomerController {
     }
 
     @PostMapping("/createAccount")
-    public ResponseEntity<Customer> createCustomerHandler(Customer customer) {
+    public ResponseEntity<Customer> createCustomerHandler(@RequestBody Customer customer) {
 
         Customer tempCustomer = customer;
 
         if(customer.getCustomerPassword() == "adminpass")
         {
             tempCustomer.setRole(Role.ADMIN);
+            
         } 
         
         tempCustomer.setRole(Role.CUSTOMER);
 
+        
         return ResponseEntity.status(200).body(customerService.createCustomer(tempCustomer));
     }
 

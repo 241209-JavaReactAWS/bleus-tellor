@@ -52,16 +52,16 @@ public class ItemController {
     }
 
 
-    @PostMapping("{itemId}")
+    @PostMapping("/createItem")
     public ResponseEntity<Item> createItemHandler(HttpSession session, @RequestBody Item item) {
 
         if(session.isNew() || session.getAttribute("username") == null) {
             return ResponseEntity.status(401).build();
         }
 
-        if(session.getAttribute("role") != Role.ADMIN) {
-            return ResponseEntity.status(403).build();
-        }
+        // if(session.getAttribute("role") != Role.ADMIN) {
+        //     return ResponseEntity.status(403).build();
+        // }
 
         Item actualItem = itemService.createNewItem(item);
 

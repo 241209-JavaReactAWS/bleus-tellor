@@ -28,8 +28,6 @@ public class CustomerService {
     }
 
     public Customer createCustomer(Customer customer) {
-        Optional<Customer> possibleCustomer = customerDAO.getCustomerByUserName(customer.getUserName());
-
         return customerDAO.save(customer);
     }
 

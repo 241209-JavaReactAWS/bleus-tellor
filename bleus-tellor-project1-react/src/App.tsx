@@ -3,6 +3,7 @@ import Footer from "./components/footer/Footer"
 import Header from "./components/header/Header"
 import Nav from "./components/nav/Nav"
 import Main from "./components/mainTag/Main"
+import cartMUI from "./components/cart-page/cartMUI"
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
     <BrowserRouter>
     <Nav></Nav>
     <Main></Main>
+    <cartMui/>
     <Routes>
     </Routes>
     
