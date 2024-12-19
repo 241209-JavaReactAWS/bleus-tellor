@@ -106,7 +106,7 @@ public class CustomerController {
     }
 
     @PutMapping("/{customerId}")
-    public ResponseEntity<Customer> updateCustomerHandler(Customer customer, HttpSession session) {
+    public ResponseEntity<Customer> updateCustomerHandler(@RequestBody Customer customer, HttpSession session) {
 
         Optional<Customer> possibleCustomer = customerService.getCustomer(customer.getCustomerId());
 
