@@ -16,8 +16,5 @@
     "url": "https://github.com/241209-JavaReactAWS/bleus-tellor/issues"
   },
   "homepage": "https://github.com/241209-JavaReactAWS/bleus-tellor#readme",
-  "description": "",
-  "dependencies": {
-    "bcrypt": "^5.1.1"
-  }
+  "description": ""
 }
