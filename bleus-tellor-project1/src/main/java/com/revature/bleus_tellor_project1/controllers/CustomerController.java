@@ -26,12 +26,9 @@ public class CustomerController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Customer>> getAllCustomerHandler(HttpSession session){
+    public List<Customer> getAllCustomerHandler(HttpSession session){
                 
-        if(session.getAttribute("role") != Role.ADMIN) {
-            return null;
-        }
-        return ResponseEntity.status(304).body(customerService.getAllCustomer());
+        return customerService.getAllCustomer();
     }
 
     @PostMapping("/login")
@@ -92,13 +89,6 @@ public class CustomerController {
     public ResponseEntity<Customer> createCustomerHandler(@RequestBody Customer customer) {
 
         Customer tempCustomer = customer;
-
-        if(customer.getCustomerPassword() == "adminpass")
-        {
-            tempCustomer.setRole(Role.ADMIN);
-        } else {
-            tempCustomer.setRole(Role.USER);
-        }
 
         return ResponseEntity.status(200).body(customerService.createCustomer(tempCustomer));
     }
