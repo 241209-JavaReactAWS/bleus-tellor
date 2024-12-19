@@ -28,9 +28,6 @@ public class CustomerController {
     @GetMapping
     public List<Customer> getAllCustomerHandler(HttpSession session){
                 
-        // if(session.getAttribute("role") != Role.ADMIN) {
-        //     return null;
-        // }
         return customerService.getAllCustomer();
     }
 
@@ -93,15 +90,6 @@ public class CustomerController {
 
         Customer tempCustomer = customer;
 
-        if(customer.getCustomerPassword() == "adminpass")
-        {
-            tempCustomer.setRole(Role.ADMIN);
-            
-        } 
-        
-        tempCustomer.setRole(Role.CUSTOMER);
-
-        
         return ResponseEntity.status(200).body(customerService.createCustomer(tempCustomer));
     }
 
