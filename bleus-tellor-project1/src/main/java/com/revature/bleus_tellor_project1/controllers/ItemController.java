@@ -25,7 +25,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("items")
-@CrossOrigin(origins = "https://localhost:5173", allowCredentials = "true")
+@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 public class ItemController {
 
     private final ItemService itemService;

@@ -1,29 +1,14 @@
 import { Card, CardMedia, CardContent, Typography, CardActions, Button } from "@mui/material"
 import {Item} from "../../Interfaces/Item"
-import { useEffect } from "react"
-import axios from "axios"
-
-function cartMUI() {
-
-    const myItem : Item {};
 
 
-    useEffect(() => {
-        axios.get<Item>('http://localhost:8080/item/2')
-        .then((res) => {
-
-        })
-        .catch((err) => {
-
-        })
-    })
-
+function CartItemMUI(props: Item) {
   return (
       <Card sx={{ maxWidth: 345 }}>
         <CardMedia 
         sx={{heigth: 140}}
-        image= {myItem.picUrl}
-        title= {myItem.itemName} 
+        image= {props.picUrl}
+        title= {props.itemName} 
         />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -42,4 +27,4 @@ function cartMUI() {
   )
 }
 
-export default cartMUI
+export default CartItemMUI
