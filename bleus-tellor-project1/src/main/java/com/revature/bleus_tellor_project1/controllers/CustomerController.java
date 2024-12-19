@@ -123,7 +123,7 @@ public class CustomerController {
         return ResponseEntity.status(200).body(actualCustomer);
     }
 
-    @GetMapping("{/myAccount}")
+    @GetMapping("/myAccount")
     public ResponseEntity<Customer> getCustomerHandler(HttpSession session) {
 
         if (session.isNew() || session.getAttribute("username") == null) {
