@@ -89,7 +89,7 @@ public class CustomerController {
     }
 
     @PostMapping("/createAccount")
-    public ResponseEntity<Customer> createCustomerHandler(Customer customer) {
+    public ResponseEntity<Customer> createCustomerHandler(@RequestBody Customer customer) {
 
         Customer tempCustomer = customer;
 
@@ -104,7 +104,7 @@ public class CustomerController {
     }
 
     @PutMapping("/{customerId}")
-    public ResponseEntity<Customer> updateCustomerHandler(Customer customer, HttpSession session) {
+    public ResponseEntity<Customer> updateCustomerHandler(@RequestBody Customer customer, HttpSession session) {
 
         Optional<Customer> possibleCustomer = customerService.getCustomer(customer.getCustomerId());
 
