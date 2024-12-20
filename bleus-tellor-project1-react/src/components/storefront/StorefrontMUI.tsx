@@ -48,17 +48,16 @@ function StorefrontMUI() {
           </TableHead>
 
           <TableBody>
-            {allItems.map((item, index) => (
+            {allItems.map((item) => (
               <TableRow
                 key={item.itemId}
                 sx={{
-                  backgroundColor: index % 2 === 0 ? '#f9f9f9' : '#ffffff',
-                  '&:hover': { backgroundColor: '#f1f1f1', cursor: 'pointer' }
+                  hover: { backgroundColor: '#f1f1f1', cursor: 'pointer' }
                 }}
               >
                 <TableCell>
                   <img
-                    src="https://www.nintendo.com/eu/media/images/10_share_images/support_9/H2x1_GameBoy_support_no_logo_image1280w.jpg"
+                    src={item.picURL}
                     height="200px"
                     width="400px"
                     style={{ display: 'block', margin: 'auto' }}
