@@ -44,7 +44,7 @@ function NavMUI() {
                     <Button color="inherit" onClick={handleMenuClick}>
                         Menu
                     </Button>
-                    
+
                     <Typography variant="h6" sx={{ flexGrow: 1 }}>
                         TellorBleus
                     </Typography>
@@ -54,9 +54,19 @@ function NavMUI() {
                         open={Boolean(anchorEl)}
                         onClose={handleMenuClose}>
                         <MenuItem onClick={() => navToPage('/itemCart')}>Shopping Cart</MenuItem>
-                        <Divider orientation="vertical" flexItem sx={{ mx: .5 }} />
+
+                        <Divider orientation="horizontal" flexItem sx={{ mx: 2, borderWidth: 2 }} />
 
                         <MenuItem onClick={() => navToPage('/')}>Storefront</MenuItem>
+
+
+                        {auth?.role === 'ADMIN' && (
+                            <>
+                                <Divider orientation="horizontal" flexItem sx={{ mx: 2, borderWidth: 2 }} />
+                                <MenuItem onClick={() => navToPage('/listings-editor')}>Listings Editor</MenuItem>
+                            </>
+                        )}
+
                     </Menu>
 
                     <Box sx={{ flexGrow: 1 }} />
