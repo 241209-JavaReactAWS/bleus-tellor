@@ -10,6 +10,7 @@ import { Customer } from "./Interfaces/Customer"
 import StorefrontMUI from "./components/storefront/StorefrontMUI"
 import CartMUI from "./components/cart-page/CartMUI"
 import NavMUI from "./components/nav/NavMUI"
+import ListingsPageMUI from "./components/listings-editor/ListingsPageMUI"
 
 export interface AuthContextType{
   userName: string,
@@ -58,6 +59,7 @@ function App() {
     <Routes>
       <Route path='/' element={<StorefrontMUI/>}/>
       <Route path='/itemCart' element={<CartMUI/>}/>
+      <Route path='/listings' element={<ListingsPageMUI/>}/>
     </Routes>
     
     </BrowserRouter>

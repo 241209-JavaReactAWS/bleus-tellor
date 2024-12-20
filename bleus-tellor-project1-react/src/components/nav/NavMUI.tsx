@@ -59,11 +59,10 @@ function NavMUI() {
 
                         <MenuItem onClick={() => navToPage('/')}>Storefront</MenuItem>
 
-
                         {auth?.role === 'ADMIN' && (
                             <>
                                 <Divider orientation="horizontal" flexItem sx={{ mx: 2, borderWidth: 2 }} />
-                                <MenuItem onClick={() => navToPage('/listings-editor')}>Listings Editor</MenuItem>
+                                <MenuItem onClick={() => navToPage('/listings')}>Listings Editor</MenuItem>
                             </>
                         )}
 
